@@ -36,7 +36,7 @@ pico_sdk_init()
 # Add executable. Default name is the project name, version 0.1
 
 add_executable(PiPod
-    LCD.c
+    drivers/lcd_1602_i2c.c
     PiPod.c 
 )
 
@@ -58,7 +58,7 @@ target_include_directories(PiPod PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(PiPod 
-        
+        hardware_i2c
         )
 
 pico_add_extra_outputs(PiPod)
