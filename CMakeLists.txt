@@ -59,6 +59,7 @@ target_include_directories(PiPod PRIVATE
 # Add any user requested libraries
 target_link_libraries(PiPod 
         hardware_i2c
+        hardware_adc
         )
 
 pico_add_extra_outputs(PiPod)
