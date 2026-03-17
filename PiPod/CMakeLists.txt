@@ -35,17 +35,14 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(PiPod
-    drivers/lcd_1602_i2c.c
-    PiPod.c 
-)
+add_executable(PiPod PiPod.c lib/dwm_pico_5110_LCD/dwm_pico_5110_LCD.c)
 
 pico_set_program_name(PiPod "PiPod")
 pico_set_program_version(PiPod "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(PiPod 0)
-pico_enable_stdio_usb(PiPod 1)
+pico_enable_stdio_usb(PiPod 0)
 
 # Add the standard library to the build
 target_link_libraries(PiPod
@@ -58,8 +55,9 @@ target_include_directories(PiPod PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(PiPod 
+        hardware_spi
         hardware_i2c
-        hardware_adc
+        
         )
 
 pico_add_extra_outputs(PiPod)
